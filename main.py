@@ -1,7 +1,5 @@
 from linkkit import linkkit
-import time  # 应对异步调用
-import sys
-import logging
+import time, logging, random  # 应对异步调用
 
 
 # config log
@@ -25,7 +23,7 @@ lk = linkkit.LinkKit(
 )
 
 lk.enable_logger(logging.DEBUG)
-lk.thing_setup('https://iotx-tsl.oss-ap-southeast-1.aliyuncs.com/schema.json')  # 物模型路径
+lk.thing_setup(r"C:\Users\Moria\Desktop\ali-MqttTest\MQTT.json")  # 物模型路径
 
 
 # 连接阿里云
@@ -63,10 +61,24 @@ def on_publish_topic(mid, userdata):
     print("on_publish_topic mid:%d" % mid)
 
 
-# # 上报属性
-# def on_thing_prop_post(request_id, code, data, message, userdata):
-#     logging.info("on_thing_prop_post request id:%s, code:%d message:%s, data:%s,userdata:%s" %
-#                  (request_id, code, message, data, userdata))
+# 上报属性
+def on_thing_prop_post(request_id, code, data, message, userdata):
+    print("on_thing_prop_post request id:%s, code:%d, data:%s message:%s" %
+          (request_id, code, str(data), message))
+
+
+def on_thing_prop_changed(message, userdata):
+    if "messSend" in message.keys():
+        prop_data["messSend"] = message["messSend"]
+    lk.thing_post_property(message)
+
+
+def on_thing_enable(userdata):
+    print("用户可以进行属性上报")
+
+
+def on_thing_disable(userdata):
+    print("on_thing_disable")
 
 
 # 注册接收到云端数据的方法
@@ -81,8 +93,12 @@ lk.on_topic_message = on_topic_message
 lk.on_publish_topic = on_publish_topic
 # 注册取消云端订阅的方法
 lk.on_unsubscribe_topic = on_unsubscribe_topic
+
+lk.on_thing_prop_changed = on_thing_prop_changed
 # 注册上报云端消息的方法
 lk.on_thing_prop_post = on_thing_prop_post
+lk.on_thing_enable = on_thing_enable
+lk.on_thing_disable = on_thing_disable
 
 # 连接阿里云的数据（异步调用）
 lk.connect_async()
@@ -91,12 +107,27 @@ time.sleep(2)
 # 订阅主题
 rc, mid = lk.subscribe_topic(lk.to_full_topic("user/get"))
 
-# 发布主题
-while True:
-    result={
-         "result": "ok"
-    }
-    rc, mid = lk.publish_topic(lk.to_full_topic("user/update"), str(result))
-    print("111")
-    time.sleep(2)
-    pass
+
+# 模拟设备属性
+# prop_data = {"Mqtt_Test:SendResult": 0}
+
+
+# 上报信息至云平台
+countFlag = 10
+while countFlag > 1:
+    prop_data = {"Mqtt_Test:SendResult": 0}
+    rc, request_id = lk.thing_post_property({**prop_data})
+    if rc == 0:
+        logging.info("thing_post_property success:%r,mid:%r,\npost_data:%s" % (rc, request_id, prop_data))
+    else:
+        logging.warning("thing_post_property failed:%d" % rc)
+    events = ("Error", {"ErrorCode": random.randint(0, 5)})
+    rc1, request_id1 = lk.thing_trigger_event(events)
+    if rc1 == 0:
+        logging.info("thing_trigger_event success:%r,mid:%r,\npost_data:%s" % (rc1, request_id1, events))
+    else:
+        logging.warning("thing_trigger_event failed:%d" % rc)
+    time.sleep(60)
+    countFlag -= 1
+
+

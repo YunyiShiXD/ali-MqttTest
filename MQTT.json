@@ -1,0 +1,84 @@
+{
+  "schema": "https://iotx-tsl.oss-ap-southeast-1.aliyuncs.com/schema.json",
+  "profile": {
+    "version": "1.0",
+    "productKey": "hha9ADVAKLS"
+  },
+  "properties": [
+    {
+      "identifier": "SendResult",
+      "name": "messSend",
+      "accessMode": "r",
+      "desc": "判断设备利用MQTT上传阿里云是否成功",
+      "required": false,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "上传失败",
+          "1": "上传成功"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "identifier": "post",
+      "name": "post",
+      "type": "info",
+      "required": true,
+      "desc": "属性上报",
+      "method": "thing.event.property.post",
+      "outputData": [
+        {
+          "identifier": "SendResult",
+          "name": "messSend",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "上传失败",
+              "1": "上传成功"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "identifier": "set",
+      "name": "set",
+      "required": true,
+      "callType": "async",
+      "desc": "属性设置",
+      "method": "thing.service.property.set",
+      "inputData": [],
+      "outputData": []
+    },
+    {
+      "identifier": "get",
+      "name": "get",
+      "required": true,
+      "callType": "async",
+      "desc": "属性获取",
+      "method": "thing.service.property.get",
+      "inputData": [
+        "SendResult"
+      ],
+      "outputData": [
+        {
+          "identifier": "SendResult",
+          "name": "messSend",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "上传失败",
+              "1": "上传成功"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "functionBlockId": "Mqtt_Test",
+  "functionBlockName": "MQTT"
+}

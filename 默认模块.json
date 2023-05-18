@@ -1,0 +1,1599 @@
+{
+  "schema": "https://iotx-tsl.oss-ap-southeast-1.aliyuncs.com/schema.json",
+  "profile": {
+    "version": "1.5",
+    "productKey": "hha9ADVAKLS"
+  },
+  "properties": [
+    {
+      "identifier": "LightStatus",
+      "name": "工作状态",
+      "accessMode": "rw",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "关闭",
+          "1": "打开"
+        }
+      }
+    },
+    {
+      "identifier": "LightAdjustLevel",
+      "name": "调光等级",
+      "accessMode": "rw",
+      "desc": "调光等级采用百分比表示",
+      "required": true,
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "100",
+          "unit": "%",
+          "unitName": "百分比",
+          "step": "1"
+        }
+      }
+    },
+    {
+      "identifier": "LightVolt",
+      "name": "工作电压",
+      "accessMode": "r",
+      "desc": "显示设备电压；电参数采用4个字节浮点型数据",
+      "required": true,
+      "dataType": {
+        "type": "float",
+        "specs": {
+          "min": "0",
+          "max": "4",
+          "unit": "V",
+          "unitName": "伏特",
+          "step": "0.1"
+        }
+      }
+    },
+    {
+      "identifier": "LightCurrent",
+      "name": "工作电流",
+      "accessMode": "r",
+      "desc": "电参数采用4个字节浮点型数据",
+      "required": true,
+      "dataType": {
+        "type": "float",
+        "specs": {
+          "min": "0",
+          "max": "9",
+          "unit": "A",
+          "unitName": "安培",
+          "step": "0.1"
+        }
+      }
+    },
+    {
+      "identifier": "ActivePower",
+      "name": "有功功率值",
+      "accessMode": "r",
+      "desc": "电参数采用4个字节浮点型数据",
+      "required": true,
+      "dataType": {
+        "type": "float",
+        "specs": {
+          "min": "0",
+          "max": "1000",
+          "unit": "W",
+          "unitName": "瓦特",
+          "step": "0.1"
+        }
+      }
+    },
+    {
+      "identifier": "PowerRatio",
+      "name": "功率因数",
+      "accessMode": "r",
+      "desc": "电参数采用4个字节浮点型数据",
+      "required": true,
+      "dataType": {
+        "type": "float",
+        "specs": {
+          "min": "0.01",
+          "max": "1",
+          "unit": "pF",
+          "unitName": "皮法",
+          "step": "0.1"
+        }
+      }
+    },
+    {
+      "identifier": "PowerConsumption",
+      "name": "用电量",
+      "accessMode": "r",
+      "desc": "耗电量；电参数采用4个字节浮点型数据",
+      "required": true,
+      "dataType": {
+        "type": "float",
+        "specs": {
+          "min": "0",
+          "max": "2147483647",
+          "unit": "kW·h",
+          "unitName": "千瓦·时",
+          "step": "0.1"
+        }
+      }
+    },
+    {
+      "identifier": "DrainVoltage",
+      "name": "漏电压",
+      "accessMode": "r",
+      "desc": "电参数采用4个字节浮点型数据",
+      "required": true,
+      "dataType": {
+        "type": "float",
+        "specs": {
+          "min": "0",
+          "max": "400",
+          "unit": "V",
+          "unitName": "伏特",
+          "step": "0.1"
+        }
+      }
+    },
+    {
+      "identifier": "TiltValue",
+      "name": "倾斜角度值",
+      "accessMode": "r",
+      "desc": "路灯的倾斜角度；采用1个字节16进制数",
+      "required": true,
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "90",
+          "unit": "°",
+          "unitName": "度",
+          "step": "1"
+        }
+      }
+    },
+    {
+      "identifier": "ErrorPowerThreshold",
+      "name": "故障功率门限",
+      "accessMode": "rw",
+      "desc": "故障功率门限",
+      "required": true,
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "1000",
+          "unit": "W",
+          "unitName": "瓦特",
+          "step": "1"
+        }
+      }
+    },
+    {
+      "identifier": "ErrorCurrentThreshold",
+      "name": "故障电流门限",
+      "accessMode": "rw",
+      "required": true,
+      "dataType": {
+        "type": "float",
+        "specs": {
+          "min": "0.1",
+          "max": "9",
+          "unit": "A",
+          "unitName": "安培",
+          "step": "0.1"
+        }
+      }
+    },
+    {
+      "identifier": "TiltThreshold",
+      "name": "倾斜阈值",
+      "accessMode": "rw",
+      "required": true,
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "90",
+          "unit": "°",
+          "unitName": "度",
+          "step": "1"
+        }
+      }
+    },
+    {
+      "identifier": "UnderVoltThreshold",
+      "name": "欠压阈值",
+      "accessMode": "rw",
+      "required": true,
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "400",
+          "unit": "V",
+          "unitName": "伏特",
+          "step": "1"
+        }
+      }
+    },
+    {
+      "identifier": "OverCurrentThreshold",
+      "name": "过流阈值",
+      "accessMode": "rw",
+      "required": true,
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "9",
+          "unit": "A",
+          "unitName": "安培",
+          "step": "1"
+        }
+      }
+    },
+    {
+      "identifier": "OverVoltThreshold",
+      "name": "过压阈值",
+      "accessMode": "rw",
+      "required": true,
+      "dataType": {
+        "type": "int",
+        "specs": {
+          "min": "0",
+          "max": "400",
+          "unit": "V",
+          "unitName": "伏特",
+          "step": "1"
+        }
+      }
+    },
+    {
+      "identifier": "LightErrorEnable",
+      "name": "灯具故障使能",
+      "accessMode": "rw",
+      "desc": "1：打开，0：关闭",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "关闭",
+          "1": "打开"
+        }
+      }
+    },
+    {
+      "identifier": "OverCurrentEnable",
+      "name": "过流告警使能",
+      "accessMode": "rw",
+      "desc": "1：打开，0：关闭",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "关闭",
+          "1": "打开"
+        }
+      }
+    },
+    {
+      "identifier": "OverVoltEnable",
+      "name": "过压告警使能",
+      "accessMode": "rw",
+      "desc": "1：打开，0：关闭",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "关闭",
+          "1": "打开"
+        }
+      }
+    },
+    {
+      "identifier": "UnderVoltEnable",
+      "name": "欠压告警使能",
+      "accessMode": "rw",
+      "desc": "1：打开，0：关闭",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "关闭",
+          "1": "打开"
+        }
+      }
+    },
+    {
+      "identifier": "LeakageEnable",
+      "name": "漏电告警使能",
+      "accessMode": "rw",
+      "desc": "1：打开，0：关闭",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "关闭",
+          "1": "打开"
+        }
+      }
+    },
+    {
+      "identifier": "OverTiltEnable",
+      "name": "倾斜告警使能",
+      "accessMode": "rw",
+      "desc": "1：打开，0：关闭",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "关闭",
+          "1": "打开"
+        }
+      }
+    },
+    {
+      "identifier": "LampError",
+      "name": "灯具故障告警",
+      "accessMode": "r",
+      "desc": "1-告警；0-正常",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "正常",
+          "1": "告警"
+        }
+      }
+    },
+    {
+      "identifier": "OverCurrentError",
+      "name": "过流告警",
+      "accessMode": "r",
+      "desc": "1-告警；0-正常",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "正常",
+          "1": "告警"
+        }
+      }
+    },
+    {
+      "identifier": "OverVoltError",
+      "name": "过压告警",
+      "accessMode": "r",
+      "desc": "1-告警；0-正常",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "正常",
+          "1": "告警"
+        }
+      }
+    },
+    {
+      "identifier": "UnderVoltError",
+      "name": "欠压告警",
+      "accessMode": "r",
+      "desc": "1-告警；0-正常",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "正常",
+          "1": "告警"
+        }
+      }
+    },
+    {
+      "identifier": "OverTiltError",
+      "name": "倾斜告警",
+      "accessMode": "r",
+      "desc": "1-告警；0-正常",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "正常",
+          "1": "告警"
+        }
+      }
+    },
+    {
+      "identifier": "LeakageError",
+      "name": "漏电告警",
+      "accessMode": "r",
+      "desc": "1-告警；0-正常",
+      "required": true,
+      "dataType": {
+        "type": "bool",
+        "specs": {
+          "0": "正常",
+          "1": "告警"
+        }
+      }
+    },
+    {
+      "identifier": "GeoLocation",
+      "name": "地理位置",
+      "accessMode": "rw",
+      "required": true,
+      "dataType": {
+        "type": "struct",
+        "specs": [
+          {
+            "identifier": "longitude",
+            "name": "经度",
+            "dataType": {
+              "type": "double",
+              "specs": {
+                "min": "-180",
+                "max": "180",
+                "unit": "°",
+                "unitName": "度",
+                "step": "0.01"
+              }
+            }
+          },
+          {
+            "identifier": "latitude",
+            "name": "纬度",
+            "dataType": {
+              "type": "double",
+              "specs": {
+                "min": "-180",
+                "max": "180",
+                "unit": "°",
+                "unitName": "度",
+                "step": "0.01"
+              }
+            }
+          },
+          {
+            "identifier": "altitude",
+            "name": "高度",
+            "dataType": {
+              "type": "double",
+              "specs": {
+                "min": "0",
+                "max": "9999",
+                "unit": "m",
+                "unitName": "米",
+                "step": "0.01"
+              }
+            }
+          },
+          {
+            "identifier": "CoordinateSystem",
+            "name": "坐标系统",
+            "dataType": {
+              "type": "enum",
+              "specs": {
+                "1": "WGS_84",
+                "2": "GCJ_02"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "identifier": "post",
+      "name": "post",
+      "type": "info",
+      "required": true,
+      "desc": "属性上报",
+      "method": "thing.event.property.post",
+      "outputData": [
+        {
+          "identifier": "LightStatus",
+          "name": "工作状态",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LightAdjustLevel",
+          "name": "调光等级",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "100",
+              "unit": "%",
+              "unitName": "百分比",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "LightVolt",
+          "name": "工作电压",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "4",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "LightCurrent",
+          "name": "工作电流",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "ActivePower",
+          "name": "有功功率值",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "1000",
+              "unit": "W",
+              "unitName": "瓦特",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "PowerRatio",
+          "name": "功率因数",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0.01",
+              "max": "1",
+              "unit": "pF",
+              "unitName": "皮法",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "PowerConsumption",
+          "name": "用电量",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "2147483647",
+              "unit": "kW·h",
+              "unitName": "千瓦·时",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "DrainVoltage",
+          "name": "漏电压",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "TiltValue",
+          "name": "倾斜角度值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "90",
+              "unit": "°",
+              "unitName": "度",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "ErrorPowerThreshold",
+          "name": "故障功率门限",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "1000",
+              "unit": "W",
+              "unitName": "瓦特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "ErrorCurrentThreshold",
+          "name": "故障电流门限",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0.1",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "TiltThreshold",
+          "name": "倾斜阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "90",
+              "unit": "°",
+              "unitName": "度",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltThreshold",
+          "name": "欠压阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentThreshold",
+          "name": "过流阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltThreshold",
+          "name": "过压阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "LightErrorEnable",
+          "name": "灯具故障使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentEnable",
+          "name": "过流告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltEnable",
+          "name": "过压告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltEnable",
+          "name": "欠压告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LeakageEnable",
+          "name": "漏电告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverTiltEnable",
+          "name": "倾斜告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LampError",
+          "name": "灯具故障告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentError",
+          "name": "过流告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltError",
+          "name": "过压告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltError",
+          "name": "欠压告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "OverTiltError",
+          "name": "倾斜告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "LeakageError",
+          "name": "漏电告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "GeoLocation",
+          "name": "地理位置",
+          "dataType": {
+            "type": "struct",
+            "specs": [
+              {
+                "identifier": "longitude",
+                "name": "经度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "-180",
+                    "max": "180",
+                    "unit": "°",
+                    "unitName": "度",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "latitude",
+                "name": "纬度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "-180",
+                    "max": "180",
+                    "unit": "°",
+                    "unitName": "度",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "altitude",
+                "name": "高度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "0",
+                    "max": "9999",
+                    "unit": "m",
+                    "unitName": "米",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "CoordinateSystem",
+                "name": "坐标系统",
+                "dataType": {
+                  "type": "enum",
+                  "specs": {
+                    "1": "WGS_84",
+                    "2": "GCJ_02"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "services": [
+    {
+      "identifier": "set",
+      "name": "set",
+      "required": true,
+      "callType": "async",
+      "desc": "属性设置",
+      "method": "thing.service.property.set",
+      "inputData": [
+        {
+          "identifier": "LightStatus",
+          "name": "工作状态",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LightAdjustLevel",
+          "name": "调光等级",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "100",
+              "unit": "%",
+              "unitName": "百分比",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "ErrorPowerThreshold",
+          "name": "故障功率门限",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "1000",
+              "unit": "W",
+              "unitName": "瓦特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "ErrorCurrentThreshold",
+          "name": "故障电流门限",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0.1",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "TiltThreshold",
+          "name": "倾斜阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "90",
+              "unit": "°",
+              "unitName": "度",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltThreshold",
+          "name": "欠压阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentThreshold",
+          "name": "过流阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltThreshold",
+          "name": "过压阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "LightErrorEnable",
+          "name": "灯具故障使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentEnable",
+          "name": "过流告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltEnable",
+          "name": "过压告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltEnable",
+          "name": "欠压告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LeakageEnable",
+          "name": "漏电告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverTiltEnable",
+          "name": "倾斜告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "GeoLocation",
+          "name": "地理位置",
+          "dataType": {
+            "type": "struct",
+            "specs": [
+              {
+                "identifier": "longitude",
+                "name": "经度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "-180",
+                    "max": "180",
+                    "unit": "°",
+                    "unitName": "度",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "latitude",
+                "name": "纬度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "-180",
+                    "max": "180",
+                    "unit": "°",
+                    "unitName": "度",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "altitude",
+                "name": "高度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "0",
+                    "max": "9999",
+                    "unit": "m",
+                    "unitName": "米",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "CoordinateSystem",
+                "name": "坐标系统",
+                "dataType": {
+                  "type": "enum",
+                  "specs": {
+                    "1": "WGS_84",
+                    "2": "GCJ_02"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "outputData": []
+    },
+    {
+      "identifier": "get",
+      "name": "get",
+      "required": true,
+      "callType": "async",
+      "desc": "属性获取",
+      "method": "thing.service.property.get",
+      "inputData": [
+        "LightStatus",
+        "LightAdjustLevel",
+        "LightVolt",
+        "LightCurrent",
+        "ActivePower",
+        "PowerRatio",
+        "PowerConsumption",
+        "DrainVoltage",
+        "TiltValue",
+        "ErrorPowerThreshold",
+        "ErrorCurrentThreshold",
+        "TiltThreshold",
+        "UnderVoltThreshold",
+        "OverCurrentThreshold",
+        "OverVoltThreshold",
+        "LightErrorEnable",
+        "OverCurrentEnable",
+        "OverVoltEnable",
+        "UnderVoltEnable",
+        "LeakageEnable",
+        "OverTiltEnable",
+        "LampError",
+        "OverCurrentError",
+        "OverVoltError",
+        "UnderVoltError",
+        "OverTiltError",
+        "LeakageError",
+        "GeoLocation"
+      ],
+      "outputData": [
+        {
+          "identifier": "LightStatus",
+          "name": "工作状态",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LightAdjustLevel",
+          "name": "调光等级",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "100",
+              "unit": "%",
+              "unitName": "百分比",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "LightVolt",
+          "name": "工作电压",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "4",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "LightCurrent",
+          "name": "工作电流",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "ActivePower",
+          "name": "有功功率值",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "1000",
+              "unit": "W",
+              "unitName": "瓦特",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "PowerRatio",
+          "name": "功率因数",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0.01",
+              "max": "1",
+              "unit": "pF",
+              "unitName": "皮法",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "PowerConsumption",
+          "name": "用电量",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "2147483647",
+              "unit": "kW·h",
+              "unitName": "千瓦·时",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "DrainVoltage",
+          "name": "漏电压",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "TiltValue",
+          "name": "倾斜角度值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "90",
+              "unit": "°",
+              "unitName": "度",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "ErrorPowerThreshold",
+          "name": "故障功率门限",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "1000",
+              "unit": "W",
+              "unitName": "瓦特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "ErrorCurrentThreshold",
+          "name": "故障电流门限",
+          "dataType": {
+            "type": "float",
+            "specs": {
+              "min": "0.1",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "0.1"
+            }
+          }
+        },
+        {
+          "identifier": "TiltThreshold",
+          "name": "倾斜阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "90",
+              "unit": "°",
+              "unitName": "度",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltThreshold",
+          "name": "欠压阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentThreshold",
+          "name": "过流阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "9",
+              "unit": "A",
+              "unitName": "安培",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltThreshold",
+          "name": "过压阈值",
+          "dataType": {
+            "type": "int",
+            "specs": {
+              "min": "0",
+              "max": "400",
+              "unit": "V",
+              "unitName": "伏特",
+              "step": "1"
+            }
+          }
+        },
+        {
+          "identifier": "LightErrorEnable",
+          "name": "灯具故障使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentEnable",
+          "name": "过流告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltEnable",
+          "name": "过压告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltEnable",
+          "name": "欠压告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LeakageEnable",
+          "name": "漏电告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "OverTiltEnable",
+          "name": "倾斜告警使能",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "关闭",
+              "1": "打开"
+            }
+          }
+        },
+        {
+          "identifier": "LampError",
+          "name": "灯具故障告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "OverCurrentError",
+          "name": "过流告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "OverVoltError",
+          "name": "过压告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "UnderVoltError",
+          "name": "欠压告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "OverTiltError",
+          "name": "倾斜告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "LeakageError",
+          "name": "漏电告警",
+          "dataType": {
+            "type": "bool",
+            "specs": {
+              "0": "正常",
+              "1": "告警"
+            }
+          }
+        },
+        {
+          "identifier": "GeoLocation",
+          "name": "地理位置",
+          "dataType": {
+            "type": "struct",
+            "specs": [
+              {
+                "identifier": "longitude",
+                "name": "经度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "-180",
+                    "max": "180",
+                    "unit": "°",
+                    "unitName": "度",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "latitude",
+                "name": "纬度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "-180",
+                    "max": "180",
+                    "unit": "°",
+                    "unitName": "度",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "altitude",
+                "name": "高度",
+                "dataType": {
+                  "type": "double",
+                  "specs": {
+                    "min": "0",
+                    "max": "9999",
+                    "unit": "m",
+                    "unitName": "米",
+                    "step": "0.01"
+                  }
+                }
+              },
+              {
+                "identifier": "CoordinateSystem",
+                "name": "坐标系统",
+                "dataType": {
+                  "type": "enum",
+                  "specs": {
+                    "1": "WGS_84",
+                    "2": "GCJ_02"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "functionBlocks": [
+    {
+      "functionBlockId": "Mqtt_Test",
+      "functionBlockName": "MQTT",
+      "gmtCreated": 1684390584194,
+      "productKey": "hha9ADVAKLS"
+    }
+  ]
+}
